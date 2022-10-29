@@ -8,7 +8,10 @@ dotnet tool install --global dotnet-ef
     export PATH="$PATH:/home/codespace/.dotnet/tools"
 
 dotnet add package Microsoft.EntityFrameworkCore.Design
+
 dotnet ef migrations add InitialCreate
 dotnet ef database update 
 
-push me
+dotnet add package Microsoft.Extensions.Configuration
+dotnet add package Microsoft.Extensions.Configuration.Json
+dotnet add package Microsoft.Extensions.Configuration.UserSecrets
