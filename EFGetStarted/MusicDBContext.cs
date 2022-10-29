@@ -13,14 +13,14 @@ public class MusicDBContext : DbContext
     {
         _ConfigCn = ConfigCn;
 
-    }  
+    }
     //  public MusicDBContext()
     // {        
 
     // }  
     protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlServer(_ConfigCn);
-     
+
 }
 
 [Table("Songs")]
@@ -28,6 +28,10 @@ public class Song
 {
     public int SongId { get; set; }
     public string SongTitle { get; set; } = null!;
+
+    // foreign key
+    [ForeignKey("AlbumId")]
+    public int AlbumId_FK { get; set; }
 
 }
 
