@@ -1,6 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Microsoft.Extensions.Configuration;
-
+// This is a test synch
 // Build a config object, using env vars and JSON providers.
 IConfiguration config = new ConfigurationBuilder()
     // .AddJsonFile($"appsettings.json", true, true)   
