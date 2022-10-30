@@ -14,18 +14,16 @@ var configSQLKey = config["SQLPass"];
 var configMusicDbCn = config["MusicDbCn"];
 
 using var db = new MusicDBContext(configMusicDbCn);
+// using var db = new MusicDBContext();
 
-// BasicEFProcess(db);
+BasicEFProcess(db);
+Console.WriteLine("Querying for a songs");
+       var songs = db.Songs
+ .Where(s => s.AlbumId ==1);
 
 // Write the values to the console.
 
 Console.WriteLine("Hello, World!");
-
-
-
-
-
-    
 
 static void BasicEFProcess(MusicDBContext db)
 {
