@@ -8,7 +8,7 @@ go
 use [MusicDb7]
 
 
---drop table [dbo].[Albums]
+drop table [dbo].[Albums]
 CREATE TABLE [dbo].[Albums] (
     -- a collection of Tracks with creators
     [AlbumId]    INT            IDENTITY (1001, 1) NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[Albums] (
 
 GO
 
---drop table [dbo].[Artists]
+drop table [dbo].[Artists]
 
 -- AritiArtistssts can have no Tracks, they can just be Artists
 
@@ -34,7 +34,7 @@ CREATE TABLE [dbo].[Artists] (
 GO
 
 
--- drop TABLE [dbo].[Tracks]
+drop TABLE [dbo].[Tracks]
 
 CREATE TABLE [dbo].[Tracks] (
     [TrackId]     INT            IDENTITY (1001, 1) NOT NULL,
@@ -57,33 +57,36 @@ create table [dbo].Tracks2Albums(
 	[Tracks2AlbumsId] [int] identity(1001,1) not null,
 	[TrackId] [int] ,
 	[AlbumId] [int] ,
- constraint [Tracks2AlbumsId] primary key clustered 
+ constraint [PK_Tracks2Albums] primary key clustered 
 (
-	[Tracks2AlbumsId] asc
+	Tracks2AlbumsId asc
 )with (statistics_norecompute = off, ignore_dup_key = off, optimize_for_sequential_key = off) on [PRIMARY]
 ) on [PRIMARY]
+
 go
 
 
---drop table [dbo].[Tracks2Artists]
+drop table [dbo].[Tracks2Artists]
 create table [dbo].Tracks2Artists(
 	[Tracks2ArtistsId] [int] identity(1001,1) not null,
 	[TrackId] [int] ,
 	[ArtistId] [int] ,
- constraint Tracks2Artists primary key clustered 
+ constraint [PK_Tracks2Artists] primary key clustered 
 (
 	Tracks2ArtistsId asc
 )with (statistics_norecompute = off, ignore_dup_key = off, optimize_for_sequential_key = off) on [PRIMARY]
 ) on [PRIMARY]
+	
+
 go
 
 
---drop table [dbo].[Artists2Albums]
+drop table [dbo].[Artists2Albums]
 create table [dbo].Artists2Albums(
 	[Artists2AlbumsId] [int] identity(1001,1) not null,
 	[AlbumsId] [int] ,
 	[ArtistId] [int] ,
- constraint [Artists2Albums] primary key clustered 
+ constraint [PK_Artists2Albums] primary key clustered 
 (
 	Artists2AlbumsId asc
 )with (statistics_norecompute = off, ignore_dup_key = off, optimize_for_sequential_key = off) on [PRIMARY]
