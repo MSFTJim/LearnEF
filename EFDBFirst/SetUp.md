@@ -1,4 +1,5 @@
 dotnet tool install --global dotnet-ef
+    export PATH="$PATH:/home/codespace/.dotnet/tools"
 
 dotnet add package Microsoft.EntityFrameworkCore.Design
 

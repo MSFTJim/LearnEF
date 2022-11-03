@@ -7,8 +7,11 @@ namespace EFDBFirst
 {
     public partial class DB8Context : DbContext
     {
-        public DB8Context()
+
+        public string _ConfigCn { get; set; }
+        public DB8Context(string ConfigCn)
         {
+             _ConfigCn = ConfigCn;
         }
 
         public DB8Context(DbContextOptions<DB8Context> options)
@@ -24,7 +27,8 @@ namespace EFDBFirst
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                optionsBuilder.UseSqlServer("Data Source=jfv.database.windows.net,1433;Initial Catalog=DB8;User ID=AdminJim;Password=;");
+                // optionsBuilder.UseSqlServer("Data Source=jfv.database.windows.net,1433;Initial Catalog=DB8;User ID=AdminJim;Password=;");
+                optionsBuilder.UseSqlServer(_ConfigCn);
             }
         }
 
