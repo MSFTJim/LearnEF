@@ -14,7 +14,7 @@ public class MusicDBContext : DbContext
         _ConfigCn = ConfigCn;
 
     }
-    //  public MusicDBContext()
+    //   public MusicDBContext()
     // {        
 
     // }  
@@ -28,10 +28,10 @@ public class Song
 {
     public int SongId { get; set; }
     public string SongTitle { get; set; } = null!;
-
+    public int AlbumId { get; set; }
     // foreign key
-    [ForeignKey("AlbumId")]
-    public int AlbumId_FK { get; set; }
+    // [ForeignKey("AlbumId")]
+    // public int AlbumId_FK { get; set; }
 
 }
 

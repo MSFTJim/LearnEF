@@ -1,0 +1,96 @@
+
+set ansi_nulls on
+go
+
+set quoted_identifier on
+go
+
+use [MusicDb7]
+
+
+drop table [dbo].[Albums]
+CREATE TABLE [dbo].[Albums] (
+    -- a collection of Tracks with creators
+    [AlbumId]    INT            IDENTITY (1001, 1) NOT NULL,
+    [AlbumTitle] varchar (100) NOT NULL,
+   -- [PublisherId] int not null,
+    CONSTRAINT [PK_Albums] PRIMARY KEY CLUSTERED ([AlbumId] ASC)
+);
+
+
+GO
+
+drop table [dbo].[Artists]
+
+-- AritiArtistssts can have no Tracks, they can just be Artists
+
+CREATE TABLE [dbo].[Artists] (
+    [ArtistId]    INT            IDENTITY (1001, 1) NOT NULL,
+    [ArtistNames] varchar (1000) NOT NULL,
+    CONSTRAINT [PK_Artists] PRIMARY KEY CLUSTERED ([ArtistId] ASC)
+);
+
+
+GO
+
+
+drop TABLE [dbo].[Tracks]
+
+CREATE TABLE [dbo].[Tracks] (
+    [TrackId]     INT            IDENTITY (1001, 1) NOT NULL,
+    [TrackTitle]  varchar(100) NOT NULL,
+--     [AlbumId_FK] INT            NOT NULL,
+--     [AristId_FK] INT  not null,
+
+    CONSTRAINT [PK_Tracks] PRIMARY KEY CLUSTERED ([TrackId] ASC),
+    -- CONSTRAINT [FK_Tracks_Albums_AlbumId] FOREIGN KEY ([AlbumId]) REFERENCES [dbo].[Albums] ([AlbumId]),
+    -- CONSTRAINT [FK_Tracks_Artists_ArtistId] FOREIGN KEY ([ArtistId]) REFERENCES [dbo].[Artists] ([ArtistId])
+);
+
+
+GO
+
+--------------------------------------------------------------
+
+--drop table [dbo].[Tracks2Albums]
+create table [dbo].Tracks2Albums(
+	[Tracks2AlbumsId] [int] identity(1001,1) not null,
+	[TrackId] [int] ,
+	[AlbumId] [int] ,
+ constraint [PK_Tracks2Albums] primary key clustered 
+(
+	Tracks2AlbumsId asc
+)with (statistics_norecompute = off, ignore_dup_key = off, optimize_for_sequential_key = off) on [PRIMARY]
+) on [PRIMARY]
+
+go
+
+
+drop table [dbo].[Tracks2Artists]
+create table [dbo].Tracks2Artists(
+	[Tracks2ArtistsId] [int] identity(1001,1) not null,
+	[TrackId] [int] ,
+	[ArtistId] [int] ,
+ constraint [PK_Tracks2Artists] primary key clustered 
+(
+	Tracks2ArtistsId asc
+)with (statistics_norecompute = off, ignore_dup_key = off, optimize_for_sequential_key = off) on [PRIMARY]
+) on [PRIMARY]
+	
+
+go
+
+
+drop table [dbo].[Artists2Albums]
+create table [dbo].Artists2Albums(
+	[Artists2AlbumsId] [int] identity(1001,1) not null,
+	[AlbumsId] [int] ,
+	[ArtistId] [int] ,
+ constraint [PK_Artists2Albums] primary key clustered 
+(
+	Artists2AlbumsId asc
+)with (statistics_norecompute = off, ignore_dup_key = off, optimize_for_sequential_key = off) on [PRIMARY]
+) on [PRIMARY]
+go
+
+
